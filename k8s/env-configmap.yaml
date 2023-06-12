@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  API_GATEWAY_PORT: "3000"
+  API_GATEWAY_URI: http://host.docker.internal:3000
+  CDN_HOST: host.docker.internal
+  CDN_PORT: "8080"
+  FRONTEND_CLIENT_PORT: "4200"
+  MONGO_DB_CONNECTION_URI: mongodb://mongodb_server:27017/dbFashion
+  MONGODB_COMPASS_PORT: "27017"
+  NEXT_PUBLIC_API_GATEWAY_URI: http://localhost:3000
+  ORDER_HISTORY_SERVICE_CONTAINER_ORIGIN: http://order_history_service
+  ORDER_HISTORY_SERVICE_PORT: "3002"
+  ORDERS_SERVICE_CONTAINER_ORIGIN: http://orders_service
+  ORDERS_SERVICE_PORT: "3001"
+  PAYMENTS_SERVICE_CONTAINER_ORIGIN: http://payments_service
+  PAYMENTS_SERVICE_PORT: "3004"
+  PRODUCTS_SERVICE_CONTAINER_ORIGIN: http://products_service
+  PRODUCTS_SERVICE_PORT: "3003"
+  PROJECT_ID: central-beach-194106
+  REDIS_CONNECTION_URI: redis://redis_server:6379
+  REDIS_INSIGHT_PORT: "6379"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: api-gateway-env
+  name: env
