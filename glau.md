@@ -33,6 +33,8 @@ pushd k8s
 kompose convert -f ../docker-compose.yml
 kubectl apply -f .
 
+kubectl port-forward pod/client-69b446845-gds7k 4200:420
+
 popd
 ```
 

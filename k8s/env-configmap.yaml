@@ -5,16 +5,16 @@ data:
   CDN_HOST: host.docker.internal
   CDN_PORT: "8080"
   FRONTEND_CLIENT_PORT: "4200"
-  MONGO_DB_CONNECTION_URI: mongodb://mongodb_server:27017/dbFashion
+  MONGO_DB_CONNECTION_URI: mongodb://mongodb-server:27017/dbFashion
   MONGODB_COMPASS_PORT: "27017"
   NEXT_PUBLIC_API_GATEWAY_URI: http://localhost:3000
-  ORDER_HISTORY_SERVICE_CONTAINER_ORIGIN: http://order_history_service
+  ORDER_HISTORY_SERVICE_CONTAINER_ORIGIN: http://order-history-service
   ORDER_HISTORY_SERVICE_PORT: "3002"
-  ORDERS_SERVICE_CONTAINER_ORIGIN: http://orders_service
+  ORDERS_SERVICE_CONTAINER_ORIGIN: http://orders-service
   ORDERS_SERVICE_PORT: "3001"
-  PAYMENTS_SERVICE_CONTAINER_ORIGIN: http://payments_service
+  PAYMENTS_SERVICE_CONTAINER_ORIGIN: http://payments-service
   PAYMENTS_SERVICE_PORT: "3004"
-  PRODUCTS_SERVICE_CONTAINER_ORIGIN: http://products_service
+  PRODUCTS_SERVICE_CONTAINER_ORIGIN: http://products-service
   PRODUCTS_SERVICE_PORT: "3003"
   PROJECT_ID: central-beach-194106
   REDIS_CONNECTION_URI: redis://redis-server:6379
