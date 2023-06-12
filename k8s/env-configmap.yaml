@@ -17,7 +17,7 @@ data:
   PRODUCTS_SERVICE_CONTAINER_ORIGIN: http://products_service
   PRODUCTS_SERVICE_PORT: "3003"
   PROJECT_ID: central-beach-194106
-  REDIS_CONNECTION_URI: redis://redis_server:6379
+  REDIS_CONNECTION_URI: redis://redis-server:6379
   REDIS_INSIGHT_PORT: "6379"
 kind: ConfigMap
 metadata:

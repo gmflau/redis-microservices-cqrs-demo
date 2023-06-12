@@ -4,7 +4,7 @@ services:
     container_name: redis_server
     image: 'redislabs/redismod'
     volumes:
-      - redis_data:/data
+      - redis-data:/data
     ports: # enable to visualize data in redis insight
       - '${REDIS_INSIGHT_PORT}:6379'
 
@@ -12,7 +12,7 @@ services:
     container_name: mongodb_server
     image: 'mongo'
     volumes:
-      - mongodb_data:/data/db
+      - mongodb-data:/data/db
     ports: # enable to visualize data in mongodb compass
       - '${MONGODB_COMPASS_PORT}:27017'
 
@@ -135,5 +135,5 @@ services:
       - cdn
 
 volumes:
-  redis_data:
-  mongodb_data:
+  redis-data:
+  mongodb-data:
