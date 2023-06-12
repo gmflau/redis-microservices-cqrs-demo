@@ -1,8 +1,8 @@
 apiVersion: v1
 data:
   API_GATEWAY_PORT: "3000"
-  API_GATEWAY_URI: http://host.docker.internal:3000
-  CDN_HOST: host.docker.internal
+  API_GATEWAY_URI: http://api-gateway.default.svc.cluster.local:3000
+  CDN_HOST: cdn.default.svc.cluster.local
   CDN_PORT: "8080"
   FRONTEND_CLIENT_PORT: "4200"
   MONGO_DB_CONNECTION_URI: mongodb://mongodb-server:27017/dbFashion
