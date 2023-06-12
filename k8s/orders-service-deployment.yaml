@@ -120,7 +120,7 @@ spec:
                 configMapKeyRef:
                   key: REDIS_INSIGHT_PORT
                   name: env
-          image: gcr.io//redis-ms-cqrs-orders_service
+          image: gcr.io/central-beach-194106/redis-ms-cqrs-orders_service
           name: orders-service
           resources: {}
       restartPolicy: Always
