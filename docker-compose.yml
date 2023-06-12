@@ -27,7 +27,7 @@ services:
     env_file:
       - ./.env
     depends_on:
-      - mongodb_server
+      - mongodb-server
 
   cdn:
     container_name: cdn
