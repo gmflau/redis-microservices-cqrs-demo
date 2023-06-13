@@ -55,14 +55,9 @@ docker compose push
           
 #### 5. Run Kompose to generate K8s yamls
 ```bash
-pushd k8s
- 
-export PROJECT_ID=
-
+cd k8s
 kompose convert -f ../docker-compose.yml
 kubectl apply -f .
-
-kubectl port-forward pod/client-69b446845-gds7k 4200:420
 ```
 
     
