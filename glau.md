@@ -6,7 +6,6 @@ brew install kompose
 ```
 
 #### 1. Reserve external static IP addresses
-Command to create and retrive the static IP:   
 ```bash
 gcloud compute addresses create glau-api-gateway-ip --region us-central1
 glau-api-gateway-ip="$(gcloud compute addresses describe glau-api-gateway-ip --region=us-central1 --format='value(address)')"
@@ -22,8 +21,10 @@ glau-client-host-ip="$(gcloud compute addresses describe glau-client-host-ip --r
      
 #### 2. Update .env 
 Modify the following lines:
+```
 NEXT_PUBLIC_API_GATEWAY_URI=http://<glau-api-gateway-ip>:3000
 CDN_HOST=<glau-cdn-host-ip>
+```
       
     
 #### 3. Create GKE cluster
