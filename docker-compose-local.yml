@@ -24,9 +24,8 @@ services:
       args:
         BUILD_BASE_PATH: database
     image: gcr.io/${PROJECT_ID}/redis-ms-cqrs-mongodb_seed
-    restart: on-failure
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - mongodb-server
 
@@ -49,10 +48,8 @@ services:
       args:
         BUILD_BASE_PATH: server/src/services/orders
     image: gcr.io/${PROJECT_ID}/redis-ms-cqrs-orders_service
-    ports:
-      - '${ORDERS_SERVICE_PORT}:3001'
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - redis-server
       - mongodb-server
@@ -65,10 +62,8 @@ services:
       args:
         BUILD_BASE_PATH: server/src/services/order-history
     image: gcr.io/${PROJECT_ID}/redis-ms-cqrs-order_history_service
-    ports:
-      - '${ORDER_HISTORY_SERVICE_PORT}:3002'
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - redis-server
       - mongodb-server
@@ -81,10 +76,8 @@ services:
       args:
         BUILD_BASE_PATH: server/src/services/products
     image: gcr.io/${PROJECT_ID}/redis-ms-cqrs-products_service
-    ports:
-      - '${PRODUCTS_SERVICE_PORT}:3003'
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - redis-server
       - mongodb-server
@@ -97,10 +90,8 @@ services:
       args:
         BUILD_BASE_PATH: server/src/services/payments
     image: gcr.io/${PROJECT_ID}/redis-ms-cqrs-payments_service
-    ports:
-      - '${PAYMENTS_SERVICE_PORT}:3004'
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - redis-server
       - mongodb-server
@@ -117,7 +108,7 @@ services:
     ports:
       - '${API_GATEWAY_PORT}:3000'
     env_file:
-      - ./.env
+      - ./.env.local
     depends_on:
       - orders-service
       - order-history-service
@@ -136,7 +127,7 @@ services:
     ports:
       - '${FRONTEND_CLIENT_PORT}:4200'
     env_file:
-      - ./.env
+      - ./.env.local
     stdin_open: true # -i input flag
     tty: true # -t terminal flag
     depends_on:
