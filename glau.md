@@ -57,7 +57,6 @@ docker compose push
 ```bash
 cd k8s
 kompose convert -f ../docker-compose.yml
-kubectl apply -f .
 ```
 
     
