@@ -16,5 +16,6 @@ spec:
   selector:
     io.kompose.service: api-gateway
   type: LoadBalancer
+  loadBalancerIP: 35.239.155.88
 status:
   loadBalancer: {}

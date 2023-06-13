@@ -2,12 +2,12 @@ apiVersion: v1
 data:
   API_GATEWAY_PORT: "3000"
   API_GATEWAY_URI: http://api-gateway.default.svc.cluster.local:3000
-  CDN_HOST: cdn.default.svc.cluster.local
+  CDN_HOST: 34.67.85.80
   CDN_PORT: "8080"
   FRONTEND_CLIENT_PORT: "4200"
   MONGO_DB_CONNECTION_URI: mongodb://mongodb-server:27017/dbFashion
   MONGODB_COMPASS_PORT: "27017"
-  NEXT_PUBLIC_API_GATEWAY_URI: http://34.28.238.37:3000
+  NEXT_PUBLIC_API_GATEWAY_URI: http://35.239.155.88:3000
   ORDER_HISTORY_SERVICE_CONTAINER_ORIGIN: http://order-history-service
   ORDER_HISTORY_SERVICE_PORT: "3002"
   ORDERS_SERVICE_CONTAINER_ORIGIN: http://orders-service
