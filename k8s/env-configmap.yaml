@@ -5,7 +5,7 @@ data:
   CDN_HOST: cdn
   CDN_PORT: "80"
   FRONTEND_CLIENT_PORT: "4200"
-  MONGO_DB_CONNECTION_URI: mongodb+srv://gmflau:redis-ms@cluster0.rbtmfih.mongodb.net/dbFashion
+  MONGO_DB_CONNECTION_URI: mongodb://mongodb-server:27017/dbFashion
   MONGODB_COMPASS_PORT: "27017"
   NEXT_PUBLIC_API_GATEWAY_URI: http://35.239.155.88:3000
   ORDER_HISTORY_SERVICE_CONTAINER_ORIGIN: http://order-history-service
