@@ -11,19 +11,15 @@ gcloud compute addresses create glau-api-gateway-ip --region us-central1
 glau-api-gateway-ip="$(gcloud compute addresses describe glau-api-gateway-ip --region=us-central1 --format='value(address)')"
 ```
 ```bash
-gcloud compute addresses create glau-cdn-host-ip --region us-central1
-glau-cdn-host-ip="$(gcloud compute addresses describe glau-cdn-host-ip --region=us-central1 --format='value(address)')"
-```
-```bash
 gcloud compute addresses create glau-client-host-ip --region us-central1
 glau-client-host-ip="$(gcloud compute addresses describe glau-client-host-ip --region=us-central1 --format='value(address)')"
 ```
-     
+
+         
 #### 2. Update .env 
-Modify the following lines:
-```
+Modify the following line in .env file:
+```bash
 NEXT_PUBLIC_API_GATEWAY_URI=http://<glau-api-gateway-ip>:3000
-CDN_HOST=<glau-cdn-host-ip>
 ```
       
     
@@ -64,17 +60,12 @@ kompose convert -f ../docker-compose.yml
 Add the following lines to api-gateway-service.yaml below `selector` section:
 ```bash
   type: LoadBalancer
-  loadBalacnerIP: <glau-api-gateway-ip>    
-```
-Add the following lines to cdn-service.yaml below `selector` section:
-```bash
-  type: LoadBalancer
-  loadBalacnerIP: <glau-cdn-host-ip>
-```
+  loadBalancerIP: <glau-api-gateway-ip>    
+```    
 Add the following lines to api-gateway-service.yaml below `selector` section:
 ```bash
   type: LoadBalancer
-  loadBalacnerIP: <glau-client-host-ip>
+  loadBalancerIP: <glau-client-host-ip>
 ```
 
     
@@ -92,5 +83,4 @@ Point your brower at http://<glau-client-host-ip>:4200
 ```badh
 kubectl delete -f .
 ```
-
 

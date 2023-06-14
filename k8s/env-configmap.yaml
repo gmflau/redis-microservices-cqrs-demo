@@ -2,7 +2,7 @@ apiVersion: v1
 data:
   API_GATEWAY_PORT: "3000"
   API_GATEWAY_URI: http://api-gateway.default.svc.cluster.local:3000
-  CDN_HOST: 34.67.85.80
+  CDN_HOST: cdn
   CDN_PORT: "80"
   FRONTEND_CLIENT_PORT: "4200"
   MONGO_DB_CONNECTION_URI: mongodb://mongodb-server:27017/dbFashion
