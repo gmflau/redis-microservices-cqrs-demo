@@ -32,8 +32,9 @@ kubectl get secrets -n redis rec -o jsonpath="{.data.password}" | base64 --decod
 #### Open port 9443
 ```bash
 kubectl port-forward service/rec 9443:9443
+```
 
-      
+          
 #### Install Redis Gears
 ```bash
 curl -s https://redismodules.s3.amazonaws.com/redisgears/redisgears.Linux-ubuntu20.04-x86_64.1.2.6.zip -o /tmp/redis-gears.zip
