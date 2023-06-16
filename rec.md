@@ -29,8 +29,9 @@ kubectl get secrets -n redis rec -o jsonpath="{.data.password}" | base64 --decod
 ```
 
 
-#### Open port 9443
+#### Open port 8443 & 9443
 ```bash
+kubectl port-forward service/rec 8443:8443
 kubectl port-forward service/rec 9443:9443
 ```
 
@@ -92,6 +93,7 @@ kubectl exec -it -n default pod/redis-di-cli -- redis-di create --cluster-host l
 ```
 ```
 rec.redis.svc.cluster.local
+demo@redislabs.com
 ```
 
 
