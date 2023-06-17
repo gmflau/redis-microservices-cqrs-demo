@@ -20,8 +20,8 @@ steps:
     env:
       - "PROJECT_ID=$PROJECT_ID"
     substitutions:
-    _GKE_CLUSTER: gke-cluster # default value
-    _GKE_ZONE: us-central12 # default value
+      _GKE_CLUSTER: gke-cluster # default value
+      _GKE_ZONE: us-central1 # default value
     script: |
       #!/bin/bash
       set -e
