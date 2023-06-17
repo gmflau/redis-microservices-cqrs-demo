@@ -19,13 +19,13 @@ steps:
     name: 'gcr.io/cloud-builders/gcloud'
     env:
       - "PROJECT_ID=$PROJECT_ID"
-      - "ZONE=$ZONE"
+      - "GKE_ZONE=$GKE_ZONE"
       - "GKE_CLUSTER=$GKE_CLUSTER"
     script: |
       #!/bin/bash
       set -e
-      gcloud container clusters get-credentials "$CLUSTER" \
+      gcloud container clusters get-credentials "$GKE_CLUSTER" \
         --project "$PROJECT_ID" \
-        --zone "$ZONE" 
+        --zone "$GKE_ZONE" 
       cd k8s
       kubectl apply -f . -n default

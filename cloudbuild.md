@@ -7,13 +7,13 @@ https://github.com/GoogleCloudPlatform/cloud-build-samples
 #### 1. Create Trigger
 ```bash
 export PROJECT_ID=$(gcloud info --format='value(config.project)')
-export ZONE=us-central1
+export GKE_ZONE=us-central1
 export GKE_CLUSTER=glau-gke-cluster-us-central1
 gcloud alpha builds triggers create github \
   --name=glau-cqrs-trigger \
   --repository=projects/$PROJECT_ID/locations/us-central1/connections/github-gmflau/repositories/gmflau-redis-microservices-cqrs-demo \
   --branch-pattern=^main$ \
   --build-config=cloudbuild.yaml \
-  --substitutions=_PROEJCT_ID=$PROJECT_ID,_GKE_CLUSTER=$GKE_CLUSTER,_ZONE=$ZONE \
+  --substitutions=_PROEJCT_ID=$PROJECT_ID,_GKE_CLUSTER=$GKE_CLUSTER,_GKE_ZONE=$GKE_ZONE \
   --region=us-central1
 ```
