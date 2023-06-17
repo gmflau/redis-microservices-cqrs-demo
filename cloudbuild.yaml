@@ -25,6 +25,7 @@ steps:
       # Inject IPs for ENV
       mv .env /tmp/.env
       envsubst < /tmp/.env > .env
+      more .env
   
       docker compose build
       
