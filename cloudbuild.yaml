@@ -24,7 +24,7 @@ steps:
       set -e
       gcloud container clusters get-credentials ${_GKE_CLUSTER} \
         --project $PROJECT_ID \
-        --zone ${_GKE_ZONE} 
+        --zone us-central1
       cd k8s
       kubectl apply -f . -n default
 
