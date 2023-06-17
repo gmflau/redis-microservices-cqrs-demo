@@ -22,7 +22,7 @@ steps:
     script: |
       #!/bin/bash
       set -e
-      gcloud container clusters get-credentials ${_GKE_CLUSTER} \
+      gcloud container clusters get-credentials glau-gke-cluster-us-central1 \
         --project $PROJECT_ID \
         --zone us-central1
       cd k8s
