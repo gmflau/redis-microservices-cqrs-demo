@@ -1,11 +1,29 @@
 steps:
 
 ### Build Images
+#  - id: build-images
+#    name: 'gcr.io/cloud-builders/docker'
+#    env:
+#      - "PROJECT_ID=$PROJECT_ID"
+#    args: [ 'compose', 'build' ]
+
   - id: build-images
     name: 'gcr.io/cloud-builders/docker'
     env:
       - "PROJECT_ID=$PROJECT_ID"
-    args: [ 'compose', 'build' ]
+      - "_API_GATEWAY_IP=${_API_GATEWAY_IP}"
+      - "_REDIS_URI=${_REDIS_URI}"
+      - "_REDIS_INSIGHT_PORT=${_REDIS_INSIGHT_PORT}"
+    script: |
+      #!/bin/bash
+      set -e
+      
+      # Inject IPs for ENV
+      mv .env /tmp/.env
+      envsubst < /tmp/.env > .env
+  
+      docker compose build
+      
 
 ### Push Images
   - id: push-images
@@ -13,6 +31,7 @@ steps:
     env:
       - "PROJECT_ID=$PROJECT_ID"
     args: [ 'compose', 'push' ]
+
 
 ### Deploy
   - id: 'deploy'
