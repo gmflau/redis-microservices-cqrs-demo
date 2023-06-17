@@ -29,5 +29,5 @@ steps:
       kubectl apply -f . -n default
 
 substitutions:
-  _GKE_CLUSTER: gke-cluster # default value
-  _GKE_ZONE: us-central1 # default value
+    _GKE_CLUSTER: gke-cluster
+    _GKE_ZONE: us-central1
