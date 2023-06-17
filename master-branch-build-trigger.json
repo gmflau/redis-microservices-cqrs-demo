@@ -1,0 +1,12 @@
+{ 
+  "triggerTemplate": {
+    "projectId": "central-beach-194106",
+    "repoName": "gmflau-redis-microservices-cqrs-demo",
+    "branchName": "[^(?!.*master)].*"
+  },
+  "description": "cqrs-master-branch",
+  "substitutions": {
+    "_PROJECT_ID": "central-beach-194106}", 
+  },
+  "filename": "cloudbuild.yaml"
+}
