@@ -17,6 +17,10 @@ steps:
     script: |
       #!/bin/bash
       set -e
+
+      # Install Linux libraries for envsubst
+      apt-get update -y
+      apt-get install gettext-base -y
       
       # Inject IPs for ENV
       mv .env /tmp/.env
