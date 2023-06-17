@@ -28,6 +28,7 @@ steps:
       set -e
 
       # Install Linux libraries for envsubst
+      apt-get update -y
       apt-get install gettext-base -y
 
       # Inject IPs for API and CLIENT services
