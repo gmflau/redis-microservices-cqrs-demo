@@ -21,16 +21,27 @@ steps:
       - "PROJECT_ID=$PROJECT_ID"
       - "_GKE_CLUSTER=${_GKE_CLUSTER}"
       - "_GKE_ZONE=${_GKE_ZONE}"
+      - "_API_GATEWAY_IP=${_API_GATEWAY_IP}"
+      - "_CLIENT_IP=${_CLIENT_IP}"
     script: |
       #!/bin/bash
       set -e
+
+      # Inject IPs for API and CLIENT services
+      mv ./k8s/api-gateway-service.yaml /tmp/api-gateway-service.yaml
+      envsubst < ./tmp/api-gateway-service.yaml > ./k8s/api-gateway-service.yaml
+      mv ./k8s/client-service.yaml /tmp/client-service.yaml
+      envsubst < ./tmp/client-service.yaml > ./k8s/client-service.yaml
+
+      # Deploy App 
       gcloud container clusters get-credentials ${_GKE_CLUSTER} \
         --project $PROJECT_ID \
         --zone ${_GKE_ZONE}
-      cd k8s
-      kubectl apply -f . -n default
+      kubectl apply -f ./k8s -n default
 
 substitutions:
     _GKE_CLUSTER: gke-cluster
     _GKE_ZONE: us-central1
+    _API_GATEWAY_IP: 0.0.0.0
+    _CLIENT_IP: 0.0.0.0
 
