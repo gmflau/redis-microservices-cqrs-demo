@@ -14,6 +14,6 @@ gcloud alpha builds triggers create github \
   --repository=projects/$PROJECT_ID/locations/us-central1/connections/github-gmflau/repositories/gmflau-redis-microservices-cqrs-demo \
   --branch-pattern=^main$ \
   --build-config=cloudbuild.yaml \
-  --substitutions=_PROEJCT_ID=$PROJECT_ID,_ZONE=$ZONE,_GKE_CLUSTER=$GKE_CLUSTER \
+  --substitutions=_PROEJCT_ID=$PROJECT_ID,_GKE_CLUSTER=$GKE_CLUSTER,_ZONE=$ZONE \
   --region=us-central1
 ```
