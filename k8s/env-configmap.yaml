@@ -17,8 +17,8 @@ data:
   PRODUCTS_SERVICE_CONTAINER_ORIGIN: http://products-service
   PRODUCTS_SERVICE_PORT: "3003"
   PROJECT_ID: central-beach-194106
-  REDIS_CONNECTION_URI: redis://default:xnurcS28JREs9S8HHemx2cKc1jLFi3ua@redis-10996.c279.us-central1-1.gce.cloud.redislabs.com:10996
-  REDIS_INSIGHT_PORT: "10996"
+  REDIS_CONNECTION_URI: ${_REDIS_URI}
+  REDIS_INSIGHT_PORT: ${_REDIS_INSIGHT_PORT}
 kind: ConfigMap
 metadata:
   creationTimestamp: null
