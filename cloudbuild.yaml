@@ -34,4 +34,3 @@ substitutions:
     _GKE_CLUSTER: gke-cluster
     _GKE_ZONE: us-central1
 
-
