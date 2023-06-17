@@ -22,9 +22,9 @@ steps:
     script: |
       #!/bin/bash
       set -e
-      gcloud container clusters get-credentials glau-gke-cluster-us-central1 \
+      gcloud container clusters get-credentials ${_GKE_CLUSTER} \
         --project $PROJECT_ID \
-        --zone us-central1
+        --zone ${_GKE_ZONE}
       cd k8s
       kubectl apply -f . -n default
 
