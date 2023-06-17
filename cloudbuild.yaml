@@ -1,12 +1,31 @@
 steps:
+
+### Build Images
   - id: build-images
     name: 'gcr.io/cloud-builders/docker'
     env:
       - "PROJECT_ID=$PROJECT_ID"
     args: [ 'compose', 'build' ]
 
+### Push Images
   - id: push-images
     name: 'gcr.io/cloud-builders/docker'
     env:
       - "PROJECT_ID=$PROJECT_ID"
     args: [ 'compose', 'push' ]
+
+### Deploy
+  - id: 'deploy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    env:
+      - 'PROJECT_ID=$PROJECT_ID'
+      - 'ZONE=$ZONE'
+      - 'GKE_CLUSTER=$GKE_CLUSTER'
+    script: |
+      #!/bin/bash
+      set -e
+      gcloud container clusters get-credentials "$CLUSTER" \
+        --project "$PROJECT_ID" \
+        --zone "$ZONE" 
+      cd k8s
+      kubectl apply -f . -n default
