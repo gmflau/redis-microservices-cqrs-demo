@@ -27,6 +27,9 @@ steps:
       #!/bin/bash
       set -e
 
+      # Install Linux libraries for envsubst
+      apt-get install gettext-base -y
+
       # Inject IPs for API and CLIENT services
       mv ./k8s/api-gateway-service.yaml /tmp/api-gateway-service.yaml
       envsubst < /tmp/api-gateway-service.yaml > ./k8s/api-gateway-service.yaml
