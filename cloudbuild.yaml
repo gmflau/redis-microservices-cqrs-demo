@@ -1,18 +1,18 @@
 steps:
 
 ### Build Images
-  - id: build-images
-    name: 'gcr.io/cloud-builders/docker'
-    env:
-      - "PROJECT_ID=$PROJECT_ID"
-    args: [ 'compose', 'build' ]
+#  - id: build-images
+#    name: 'gcr.io/cloud-builders/docker'
+#    env:
+#      - "PROJECT_ID=$PROJECT_ID"
+#    args: [ 'compose', 'build' ]
 
 ### Push Images
-  - id: push-images
-    name: 'gcr.io/cloud-builders/docker'
-    env:
-      - "PROJECT_ID=$PROJECT_ID"
-    args: [ 'compose', 'push' ]
+#  - id: push-images
+#    name: 'gcr.io/cloud-builders/docker'
+#    env:
+#      - "PROJECT_ID=$PROJECT_ID"
+#    args: [ 'compose', 'push' ]
 
 ### Deploy
   - id: 'deploy'
