@@ -19,6 +19,8 @@ steps:
     name: 'gcr.io/cloud-builders/gcloud'
     env:
       - "PROJECT_ID=$PROJECT_ID"
+      - "_GKE_CLUSTER=${_GKE_CLUSTER}"
+      - "_GKE_ZONE=${_GKE_ZONE}"
     script: |
       #!/bin/bash
       set -e
