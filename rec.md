@@ -31,8 +31,8 @@ kubectl get secrets -n redis rec -o jsonpath="{.data.password}" | base64 --decod
 
 #### Open port 8443 & 9443
 ```bash
-kubectl port-forward service/rec -n redis 8443:8443
-kubectl port-forward service/rec-ui -n redis 9443:9443
+kubectl port-forward service/rec-ui -n redis 8443:8443
+kubectl port-forward service/rec -n redis 9443:9443
 ```
 
           
