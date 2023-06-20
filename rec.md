@@ -225,4 +225,40 @@ EOF
 kubectl apply -f /tmp/debezium-server-pod.yml
 ```
 
-    
+#### Create a job
+Edit emp.yaml:
+```bash
+cat << 'EOF' > ./emp.yaml
+source:
+  server_name: example-postgres.default.svc.cluster.local
+  db: postgres
+  table: emp
+transform:
+  - uses: rename_field
+    with:
+      from_field: fname
+      to_field: first_name
+output:
+  - uses: redis.write
+    with:
+      connection: target
+      key:
+        expression: concat(['emp:fname:',fname,':lname:',lname])
+        language: jmespath
+EOF
+```
+Create a configmap for the job:
+```bash
+kubectl create configmap redis-di-jobs --from-file=./emp.yaml
+```
+
+#### Deploy the job
+```bash
+kubectl exec -n default -it pod/redis-di-cli -- redis-di deploy
+```
+
+#### Check if the job has been created
+```bash
+kubectl exec -it -n default pod/redis-di-cli -- redis-di list-jobs
+```
+

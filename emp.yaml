@@ -1,0 +1,16 @@
+source:
+  server_name: example-postgres.default.svc.cluster.local
+  db: postgres
+  table: emp
+transform:
+  - uses: rename_field
+    with:
+      from_field: fname
+      to_field: first_name
+output:
+  - uses: redis.write
+    with:
+      connection: target
+      key:
+        expression: concat(['emp:fname:',fname,':lname:',lname])
+        language: jmespath
