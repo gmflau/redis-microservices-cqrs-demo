@@ -5,14 +5,14 @@ connections:
     # Target type - Redis is the only supported type
     type: redis
     # Host of the Redis database to which Redis Data Integration will write the processed data
-    host: redis-di-1-headless.redis
+    host: redis-10996.c279.us-central1-1.gce.cloud.redislabs.com:10996
     # Port for the Redis database to which Redis Data Integration will write the processed data
-    port: 12001
+    port: 10996
     # User of the Redis database to which Redis Data Integration will write the processed data
     user: default
     # Password (if user is omitted, use this as the default database password)
     # Comment this out if you are using one of the below password expressions
-    password: redis
+    password: xnurcS28JREs9S8HHemx2cKc1jLFi3ua
     # To get a password from a secret:
     #password: ${secret:<name-of-secret>}
 
