@@ -7,7 +7,7 @@ kubectl config set-context --current --namespace=redis
 
 VERSION=`curl --silent https://api.github.com/repos/RedisLabs/redis-enterprise-k8s-docs/releases/latest | grep tag_name | awk -F'"' '{print $4}'`
 
-kubectl apply -f -n redis https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/$VERSION/bundle.yaml
+kubectl apply -n redis -f https://raw.githubusercontent.com/RedisLabs/redis-enterprise-k8s-docs/$VERSION/bundle.yaml
 ```
 ```bash
 cat <<EOF > rec.yaml
@@ -19,7 +19,7 @@ spec:
   nodes: 3
 EOF
 
-kubectl apply -f -n redis rec.yaml
+kubectl apply -f rec.yaml -n redis 
 ```
 
 
