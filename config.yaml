@@ -5,7 +5,7 @@ connections:
     # Target type - Redis is the only supported type
     type: redis
     # Host of the Redis database to which Redis Data Integration will write the processed data
-    host: redis-10996.c279.us-central1-1.gce.cloud.redislabs.com:10996
+    host: redis-10996.c279.us-central1-1.gce.cloud.redislabs.com
     # Port for the Redis database to which Redis Data Integration will write the processed data
     port: 10996
     # User of the Redis database to which Redis Data Integration will write the processed data

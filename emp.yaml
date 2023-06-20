@@ -7,10 +7,14 @@ transform:
     with:
       from_field: fname
       to_field: first_name
+  - uses: rename_field
+    with:
+      from_field: lname
+      to_field: last_name
 output:
   - uses: redis.write
     with:
       connection: target
       key:
-        expression: concat(['emp:fname:',fname,':lname:',lname])
+        expression: concat(['employee:',user_id])
         language: jmespath

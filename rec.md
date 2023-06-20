@@ -28,19 +28,19 @@ kubectl apply -f rec.yaml -n redis
 export REC_PWD=$(kubectl get secrets -n redis rec -o jsonpath="{.data.password}" | base64 --decode)
 ```
 
-
-#### Open port 8443 & 9443
-```bash
-kubectl port-forward service/rec-ui -n redis 8443:8443
-kubectl port-forward service/rec -n redis 9443:9443
-```
-
           
 #### Install Redis Gears
 ```bash
 kubectl exec -it rec-0 -n redis -- curl -s https://redismodules.s3.amazonaws.com/redisgears/redisgears_python.Linux-ubuntu18.04-x86_64.1.2.6.zip -o /tmp/redis-gears.zip
 
 kubectl exec -it rec-0 -n redis -- curl -k -s -u "demo@redislabs.com:${REC_PWD}" -F "module=@/tmp/redis-gears.zip" https://localhost:9443/v2/modules
+```
+
+     
+#### [Optional] Open port 8443 & 9443
+```bash
+kubectl port-forward service/rec-ui -n redis 8443:8443
+kubectl port-forward service/rec -n redis 9443:9443
 ```
 
 
@@ -80,18 +80,13 @@ kubectl apply -f /tmp/redis-di-cli-pod.yml
 
 #### Create a new RDI database
 ```bash
-# kubectl exec -it -n default pod/redis-di-cli -- redis-di create --cluster-host localhost --no-configure
-
 kubectl exec -it -n default pod/redis-di-cli -- redis-di create --cluster-host localhost 
 ```
-
-    
-
+Use: 
 ```
 rec.redis.svc.cluster.local
 demo@redislabs.com
-92wcLdKt
-
+Grab password from $REC_PWD
 ```
 
 
@@ -141,7 +136,6 @@ spec:
         value: "postgres"
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -225,6 +219,7 @@ EOF
 kubectl apply -f /tmp/debezium-server-pod.yml
 ```
 
+     
 #### Create a job
 Edit emp.yaml:
 ```bash
@@ -261,4 +256,22 @@ kubectl exec -n default -it pod/redis-di-cli -- redis-di deploy
 ```bash
 kubectl exec -it -n default pod/redis-di-cli -- redis-di list-jobs
 ```
+
+    
+     
+#### Update an existing job
+After editing the ./emp.yaml:
+```bash
+kubectl delete configmap redis-di-jobs 
+kubectl create configmap redis-di-jobs --from-file=./emp.yaml
+```
+Deploy the job (configmap):
+```bash
+kubectl exec -n default -it pod/redis-di-cli -- redis-di deploy
+```
+Review the update job detail in RDI:
+```
+kubectl exec -n default -it pod/redis-di-cli -- redis-di describe-job emp
+```
+
 
