@@ -185,3 +185,44 @@ insert into emp (fname, lname) values ('Henry', 'Ip');
 ```
 
 
+
+
+#### Create a ConfigMap for Debezium Server
+```bash
+kubectl create configmap debezium-config --from-file=application.properties
+```
+
+
+#### Create the Debezium Server Pod
+```bash
+cat << EOF > /tmp/debezium-server-pod.yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debezium-server
+  labels:
+    app: debezium-server
+spec:
+  containers:
+    - name: debezium-server
+      image: docker.io/debezium/server
+      livenessProbe:
+        httpGet:
+            path: /q/health/live
+            port: 8088
+      readinessProbe:
+        httpGet:
+            path: /q/health/ready
+            port: 8088
+      volumeMounts:
+      - name: config-volume
+        mountPath: /debezium/conf
+  volumes:
+    - name: config-volume
+      configMap:
+        name: debezium-config
+EOF
+kubectl apply -f /tmp/debezium-server-pod.yml
+```
+
+    
